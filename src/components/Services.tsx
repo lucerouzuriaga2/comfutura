@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { SERVICES } from "../data";
 import { Service } from "../types";
 import { 
   Cable, Radio, Server, Cpu, Calculator, Info, CheckCircle2, 
-  Sparkles, FileText, Download, Send, X, ArrowUpRight 
+  Sparkles, FileText, Download, Send, X, ArrowUpRight, Wrench 
 } from "lucide-react";
 
 export default function Services() {
@@ -43,6 +44,18 @@ export default function Services() {
       else if (s.id === "mw-links") setQuantity(3);
       else if (s.id === "fiber-optic") setQuantity(5);
       else if (s.id === "structured-cabling") setQuantity(50);
+      else if (s.id === "civil-works") setQuantity(100);
+      else if (s.id === "electrical-works") setQuantity(20);
+      else if (s.id === "general-services") setQuantity(6);
+      else setQuantity(10);
+
+      // Scroll to calculator
+      setTimeout(() => {
+        const el = document.getElementById("calculator-section");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
     }
   };
 
@@ -68,7 +81,7 @@ export default function Services() {
       case "Radio": return <Radio className={css} size={24} />;
       case "Server": return <Server className={css} size={24} />;
       case "Cpu": return <Cpu className={css} size={24} />;
-      case "CheckCircle2": return <CheckCircle2 className={css} size={24} />;
+      case "Wrench": return <Wrench className={css} size={24} />;
       default: return <Cable className={css} size={24} />;
     }
   };
@@ -111,7 +124,7 @@ export default function Services() {
                 </div>
               )}
 
-              <div>
+              <div className="flex-1 flex flex-col">
                 <div className="flex items-center gap-4 mb-5">
                   <div className="p-3 rounded-xl bg-white border border-gray-200 text-brand-red-light group-hover:text-white group-hover:bg-brand-red group-hover:border-brand-red transition-all duration-300 shadow-sm group-hover:shadow-md">
                     {getIcon(service.iconName, "")}
@@ -121,34 +134,40 @@ export default function Services() {
                   </h3>
                 </div>
 
-                <p className="text-xs md:text-sm text-gray-500 leading-relaxed mb-6">
-                  {service.description}
-                </p>
+                <div className="animate-fade-in flex-1">
+                  <p className="text-xs md:text-sm text-gray-500 leading-relaxed mb-6">
+                    {service.description}
+                  </p>
 
-                <div className="border-t border-gray-200 pt-5 mb-6">
-                  <h4 className="text-xs font-mono font-bold text-gray-600 uppercase tracking-wider mb-3">Características Clave</h4>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2 text-xs text-gray-500">
-                        <CheckCircle2 size={13} className="text-brand-blue" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="border-t border-gray-200 pt-5 mb-6">
+                    <h4 className="text-xs font-mono font-bold text-gray-600 uppercase tracking-wider mb-3">Características Clave</h4>
+                    <ul className="space-y-2">
+                      {service.features.map((feature, i) => (
+                        <li key={i} className="flex items-center gap-2 text-xs text-gray-500">
+                          <CheckCircle2 size={13} className="text-brand-blue" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
 
-              <div className="mt-4 flex items-center justify-between">
-                <span className="text-xs font-mono text-gray-500">
-                  DESDE ${service.basePrice.toLocaleString()} USD
-                </span>
-                <button
-                  onClick={() => handleServiceSelect(service.id)}
-                  className="text-xs font-mono tracking-wider text-brand-blue hover:text-brand-red transition-colors flex items-center gap-1 font-bold"
+              <div className="mt-4 flex flex-wrap gap-4 items-center justify-between border-t border-gray-200 pt-4">
+                <Link
+                  to={`/servicios/${service.id}`}
+                  className="text-xs font-mono tracking-wider bg-brand-blue hover:bg-brand-blue-light text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-1 font-bold shadow-sm"
                 >
-                  CALCULAR PRESUPUESTO
+                  VER DETALLES
                   <ArrowUpRight size={14} />
-                </button>
+                </Link>
+                <Link
+                  to="/contacto"
+                  className="text-xs font-mono tracking-wider text-brand-red-light hover:text-brand-red transition-colors flex items-center gap-1 font-bold"
+                >
+                  SOLICITAR INFO
+                  <ArrowUpRight size={14} />
+                </Link>
               </div>
             </div>
           ))}

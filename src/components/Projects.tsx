@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { PROJECTS } from "../data";
 import { Project } from "../types";
 import { MapPin, Calendar, CheckSquare, Layers, Eye, X, Landmark } from "lucide-react";
+import Clients from "./Clients";
 
 export default function Projects() {
   const [filter, setFilter] = useState<string>("Todos");
@@ -13,45 +14,12 @@ export default function Projects() {
     ? PROJECTS
     : PROJECTS.filter(p => p.category === filter);
 
-  const categories = ["Todos", "Minería", "Urbano", "Rural"];
-
-  // Partner logo lists
-  const partners = [
-    { name: "Satel Perú", logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuArI_I9qXyM4D0s1f5T9u7P6nK_7L0b_Z_Yv_R5E-M1-w_Q-K_L_Z-p-k_N-w_Q=w120" },
-    { name: "Satel Chile", logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuArI_I9qXyM4D0s1f5T9u7P6nK_7L0b_Z_Yv_R5E-M1-w_Q-K_L_Z-p-k_N-w_Q=w120" },
-    { name: "Andes Telecom", logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuArI_I9qXyM4D0s1f5T9u7P6nK_7L0b_Z_Yv_R5E-M1-w_Q-K_L_Z-p-k_N-w_Q=w120" },
-    { name: "Inca Grid", logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuArI_I9qXyM4D0s1f5T9u7P6nK_7L0b_Z_Yv_R5E-M1-w_Q-K_L_Z-p-k_N-w_Q=w120" },
-    { name: "Southern Infra", logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuArI_I9qXyM4D0s1f5T9u7P6nK_7L0b_Z_Yv_R5E-M1-w_Q-K_L_Z-p-k_N-w_Q=w120" },
-    { name: "Pacific Fiber", logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuArI_I9qXyM4D0s1f5T9u7P6nK_7L0b_Z_Yv_R5E-M1-w_Q-K_L_Z-p-k_N-w_Q=w120" }
-  ];
+  const categories = ["Todos", "Infraestructura", "Construcción", "Telefonía"];
 
   return (
     <section id="proyectos" className="w-full bg-white py-24 border-t border-gray-200 relative">
-      {/* Partner/Trust Banner Section */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 mb-24">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Confían en nosotros</h2>
-          <p className="text-xs md:text-sm text-gray-500 mt-2 font-sans">
-            Alianzas estratégicas con líderes del sector industrial, telecomunicaciones y minería a nivel continental
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center justify-center opacity-60 hover:opacity-100 transition-all duration-500">
-          {partners.map((partner, i) => (
-            <div
-              key={i}
-              className="flex justify-center p-4 bg-gray-50 border border-gray-200 rounded-xl hover:border-gray-200 transition-colors cursor-pointer group"
-              title={partner.name}
-            >
-              <img
-                alt={partner.name}
-                className="h-7 w-auto object-contain filter brightness-90 contrast-125 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all"
-                src={partner.logo}
-                referrerPolicy="no-referrer"
-              />
-            </div>
-          ))}
-        </div>
+      <div className="mb-24">
+        <Clients />
       </div>
 
       {/* Projects Grid Section */}
@@ -64,7 +32,7 @@ export default function Projects() {
               <span className="w-8 h-[2px] bg-brand-red-light"></span>
               <span className="font-mono text-xs text-gray-500 uppercase tracking-widest font-bold">Portafolio</span>
             </div>
-            <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">Gran Envergadura</h2>
+            <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">Nuestros proyectos</h2>
           </div>
 
           {/* Filter Bar */}

@@ -121,11 +121,11 @@ export default function HomeCalculator() {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 mb-3">
             <Calculator className="text-brand-red-light" size={18} />
-            <span className="font-mono text-xs text-gray-400 uppercase tracking-widest font-bold">Simulador comfutura</span>
+            <span className="font-mono text-xs text-gray-400 uppercase tracking-widest font-bold">Configurador de Proyecto</span>
           </div>
-          <h2 className="text-3xl font-extrabold text-white tracking-tight">Estimador de Presupuesto e Ingeniería</h2>
+          <h2 className="text-3xl font-extrabold text-white tracking-tight">Diseño de Alcance de Ingeniería</h2>
           <p className="text-gray-400 mt-3 text-xs md:text-sm">
-            Diseñe los parámetros iniciales de su red para obtener una estimación presupuestaria y operacional de ingeniería en tiempo real.
+            Diseñe los parámetros iniciales de su red para que nuestro equipo técnico evalúe la viabilidad y los requerimientos operacionales.
           </p>
         </div>
 
@@ -250,18 +250,17 @@ export default function HomeCalculator() {
                 <h3 className="font-mono text-xs font-bold text-white uppercase tracking-wider">Reporte de Pre-Ingeniería</h3>
               </div>
 
-              {/* Dynamic cost display */}
-              <div>
-                <span className="block font-mono text-[10px] text-gray-400 uppercase tracking-widest mb-1">Inversión Estimada Referencial</span>
-                <div className="flex items-baseline gap-1">
-                  <span className="font-mono text-xl text-gray-400 font-semibold">USD</span>
-                  <span className="font-sans text-3xl md:text-4xl font-black text-white tracking-tight">
-                    ${totalCostEstimate.toLocaleString("en-US")}
+              {/* Request Status display */}
+              <div className="mb-6">
+                <span className="block font-mono text-[10px] text-gray-400 uppercase tracking-widest mb-1">Estado de la Solicitud</span>
+                <div className="flex items-center gap-2 mt-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span className="font-sans text-lg font-black text-white tracking-tight">
+                    Listo para Evaluación
                   </span>
-                  <span className="font-mono text-[10px] text-emerald-400 ml-2">&bull; CAPEX + OPEX</span>
                 </div>
-                <span className="block text-[10px] text-gray-500 font-sans mt-1">
-                  *Costo estimado no vinculante. Incluye ingeniería preliminar y materiales estándar.
+                <span className="block text-[10px] text-gray-500 font-sans mt-2 leading-relaxed">
+                  *Configure los parámetros para que nuestro equipo de ingeniería pueda asignarle un especialista.
                 </span>
               </div>
 
@@ -308,7 +307,7 @@ export default function HomeCalculator() {
               onClick={handleRequestQuote}
               className="mt-8 w-full bg-brand-red-light hover:bg-brand-red text-white font-medium py-3 rounded-xl text-sm transition-all duration-300 shadow-md shadow-brand-red-light/10 hover:shadow-brand-red-light/25 flex items-center justify-center gap-2 group cursor-pointer"
             >
-              Solicitar Cotización de Ingeniería
+              Solicitar Evaluación Técnica
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </button>
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { SERVICES, PROJECTS } from "../data";
-import { ArrowRight, ShieldCheck, MapPin, Radio, Cpu, Network, Server, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ShieldCheck, MapPin, Radio, Cpu, Network, Server, ArrowUpRight, Wrench } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -89,7 +89,8 @@ export default function HomeSolutions() {
               Cable: <Network className="text-brand-red-light" size={20} />,
               Radio: <Radio className="text-brand-blue-light" size={20} />,
               Server: <Server className="text-brand-red-light" size={20} />,
-              Cpu: <Cpu className="text-brand-blue-light" size={20} />
+              Cpu: <Cpu className="text-brand-blue-light" size={20} />,
+              Wrench: <Wrench className="text-amber-500" size={20} />
             };
 
             return (

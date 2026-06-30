@@ -96,9 +96,7 @@ export default function ComfuChat() {
       return {
         text: "📍 **Nuestra Sede Central se encuentra en:**\n\nHector Arellano 125\nLa Victoria, Lima - Perú\n\nTe invitamos a visitarnos de lunes a viernes de 08:30 a 18:30 hrs. Para coordinar una reunión comercial previa, puedes escribirnos a **omasias@comfutura.com**.",
         options: [
-          { label: "WhatsApp Comercial 💬", url: "https://wa.me/51993585214?text=Hola,%20deseo%20coordinar%20una%20reunión%20comercial%20con%20Comfutura" },
           { label: "Enviar Correo 📧", url: "mailto:omasias@comfutura.com?subject=Contacto%20Comercial%20-%20Comfutura" },
-          "Ver Teléfonos 📞",
           "Enviar CV 💼",
           "Menu Principal 📋"
         ]
@@ -106,11 +104,10 @@ export default function ComfuChat() {
     }
 
     // 2. Phones / Contacts
-    if (text.includes("telefono") || text.includes("teléfono") || text.includes("celular") || text.includes("contacto") || text.includes("llamar") || text.includes("whatsapp") || text.includes("número") || text.includes("numero")) {
+    if (text.includes("contacto") || text.includes("correo") || text.includes("comunicar") || text.includes("email")) {
       return {
-        text: "📞 **Contacto Comercial Directo:**\n\n☎ **Teléfono de Enlace:** +51 993 585 214\n\n📧 **Correo de Ventas y Proyectos:**\n👉 **omasias@comfutura.com**\n\n¿Deseas iniciar una conversación rápida?",
+        text: "📞 **Contacto Comercial Directo:**\n\n📧 **Correo de Ventas y Proyectos:**\n👉 **omasias@comfutura.com**\n\n¿Deseas iniciar una conversación rápida?",
         options: [
-          { label: "WhatsApp Comercial 💬", url: "https://wa.me/51993585214?text=Hola,%20deseo%20coordinar%20una%20reunión%20comercial%20con%20Comfutura" },
           { label: "Enviar Correo 📧", url: "mailto:omasias@comfutura.com?subject=Contacto%20Comercial%20-%20Comfutura" },
           "Sede Central 📍",
           "Enviar CV 💼",
@@ -126,7 +123,6 @@ export default function ComfuChat() {
         options: [
           { label: "Enviar CV por Correo 📧", url: "mailto:rrhh@comfutura.com?subject=Postulacion%20-%20Equipo%20Comfutura" },
           "Sede Central 📍",
-          "Ver Teléfonos 📞",
           "Menu Principal 📋"
         ]
       };
@@ -137,10 +133,8 @@ export default function ComfuChat() {
       return {
         text: "📡 **Nuestras Especialidades de Ingeniería Crítica:**\n\n1. **Redes de Fibra Óptica:** Tendido aéreo/subterráneo y empalmes.\n2. **Estaciones Celdas 5G:** Torres metálicas y equipamiento RF.\n3. **Data Centers:** Racks, UPS y climatización de precisión.\n4. **Telemetría e IoT:** Monitoreo industrial remoto.\n\nPara solicitar cotizaciones comerciales de ingeniería, contáctanos a **omasias@comfutura.com**.",
         options: [
-          { label: "WhatsApp Comercial 💬", url: "https://wa.me/51993585214?text=Hola,%20deseo%20cotizar%20un%20proyecto%20con%20Comfutura" },
           { label: "Enviar Correo 📧", url: "mailto:omasias@comfutura.com?subject=Cotizacion%20de%20Proyecto%20-%20Comfutura" },
           "Sede Central 📍",
-          "Ver Teléfonos 📞",
           "Menu Principal 📋"
         ]
       };
@@ -149,11 +143,9 @@ export default function ComfuChat() {
     // 5. Soporte / NOC / SLA
     if (text.includes("soporte") || text.includes("noc") || text.includes("falla") || text.includes("ticket") || text.includes("portal") || text.includes("cliente")) {
       return {
-        text: "🔒 **Mesa de Ayuda y Soporte NOC 24/7:**\n\nSi eres cliente corporativo de Comfutura, puedes ingresar a nuestro **Portal de Autogestión** directo en el menú superior para monitorear latencia en tiempo real, descargar facturas o abrir un ticket de soporte técnico inmediato.\n\nTambién puedes llamar a nuestra central de soporte al **+51 993 585 214**.",
+        text: "🔒 **Mesa de Ayuda y Soporte NOC 24/7:**\n\nSi eres cliente corporativo de Comfutura, puedes ingresar a nuestro **Portal de Autogestión** directo en el menú superior para monitorear latencia en tiempo real, descargar facturas o abrir un ticket de soporte técnico inmediato.",
         options: [
           "Ir al Portal 🔓",
-          { label: "WhatsApp Soporte 💬", url: "https://wa.me/51993585214?text=Hola,%20requiero%20soporte%20técnico%20NOC%20de%20Comfutura" },
-          "Ver Teléfonos 📞",
           "Menu Principal 📋"
         ]
       };
@@ -164,10 +156,8 @@ export default function ComfuChat() {
       return {
         text: "¡Hola de nuevo! Soy Comfu, tu asistente de Comfutura. 😊\n\nCuéntame, ¿estás interesado en contratar nuestros servicios, unirte a la bolsa de trabajo o consultar nuestra dirección en Lima?",
         options: [
-          { label: "Escribir al WhatsApp 💬", url: "https://wa.me/51993585214?text=Hola,%20deseo%20coordinar%20una%20reunión%20comercial%20con%20Comfutura" },
           "Sede Central 📍",
           "Enviar CV 💼",
-          "Ver Teléfonos 📞",
           "Menu Principal 📋"
         ]
       };
@@ -177,7 +167,7 @@ export default function ComfuChat() {
     if (text.includes("gracias") || text.includes("agradecido") || text.includes("excelente") || text.includes("perfecto") || text.includes("entendido")) {
       return {
         text: "¡Es un placer ayudarte! En Comfutura priorizamos la precisión y la excelencia operacional. Si tienes otra duda, dímelo. 🚀",
-        options: ["Menu Principal 📋", "Ver Teléfonos 📞"]
+        options: ["Menu Principal 📋"]
       };
     }
 
@@ -185,10 +175,8 @@ export default function ComfuChat() {
     return {
       text: "Entendido. He registrado tu consulta sobre esa área de interés. \n\nPara brindarte una respuesta de ingeniería exacta, te sugiero comunicarte de forma directa con nuestro centro de operaciones o revisar nuestras opciones principales:",
       options: [
-        { label: "WhatsApp Comercial 💬", url: "https://wa.me/51993585214?text=Hola,%20deseo%20coordinar%20una%20reunión%20comercial%20con%20Comfutura" },
         { label: "Enviar Correo 📧", url: "mailto:omasias@comfutura.com?subject=Contacto%20Comercial%20-%20Comfutura" },
         "Sede / Ubicación 📍",
-        "Teléfonos de contacto 📞",
         "Enviar CV / Trabajar 💼",
         "Servicios Técnicos 📡",
         "Soporte NOC 24/7 🔒"

@@ -6,6 +6,38 @@ export const SERVICES: Service[] = [
     title: "Implementación de Equipos de Telecomunicaciones",
     description: "Instalación y configuración de equipos activos y pasivos para redes de telecomunicaciones, garantizando operatividad y cumplimiento de estándares internacionales.",
     iconName: "Server",
+    subServices: [
+      {
+        title: "Nodos 2G/3G/LTE Nokia/Huawei",
+        features: ["BTS/Flexi/Multiradio"],
+        image: "/nodos_telecom.png"
+      },
+      {
+        title: "Montaje de Racks",
+        features: ["equipos de telecomunicaciones multimarca"],
+        image: "/server-cables.png"
+      },
+      {
+        title: "Montaje y Desmontaje de enlaces MW Multimarca",
+        features: ["fabricación / suministros / instalación de soportes"],
+        image: "/montaje_mw_antenas.png"
+      },
+      {
+        title: "Montaje de antenas redes 2G /3G / 4G",
+        features: ["Suministro e Instalación de soportes", "Antenas móviles y microondas"],
+        image: "/telecom_equip_service.png"
+      },
+      {
+        title: "Montaje y Desmontaje de Sites de Emergencia",
+        features: ["atender demanda/respaldo de sites ante fallas"],
+        image: "/civil_works_service.png"
+      },
+      {
+        title: "Instalación de trucks 2G/3G/4G",
+        features: ["eventos y temporadas / concentración de usuarios"],
+        image: "/general_services_maintenance.png"
+      }
+    ],
     features: [
       "Configuración de routers y switches",
       "Integración de sistemas de energía",
@@ -22,6 +54,48 @@ export const SERVICES: Service[] = [
     title: "Instalación de Enlaces MW",
     description: "Diseño, suministro e instalación de radioenlaces de microondas para transmisión de datos de alta capacidad con línea de vista.",
     iconName: "Radio",
+    subServices: [
+      {
+        title: "Nodos 2G Nokia / Huawei (BTS / Flexi / Multiradio)",
+        features: [],
+        image: "/nodos_telecom.png"
+      },
+      {
+        title: "Nodos 3G Huawei (3800 / 3900)",
+        features: [],
+        image: "/nodos_telecom.png"
+      },
+      {
+        title: "Nodos LTE",
+        features: [],
+        image: "/nodos_telecom.png"
+      },
+      {
+        title: "Montaje de Racks para equipos",
+        features: ["de telecomunicaciones multimarca"],
+        image: "/server-cables.png"
+      },
+      {
+        title: "Montaje de antenas redes 2G /3G / 4G",
+        features: ["Suministro e Instalación de soportes", "antenas móviles / microondas"],
+        image: "/montaje_mw_antenas.png"
+      },
+      {
+        title: "Montaje y Desmontaje de Sites de Emergencia",
+        features: ["atender demanda/respaldo de sites ante fallas"],
+        image: "/civil_works_service.png"
+      },
+      {
+        title: "Instalación de trucks 2G / 3G / 4G",
+        features: ["grandes eventos y temporadas / concentración de usuarios"],
+        image: "/general_services_maintenance.png"
+      },
+      {
+        title: "Montaje y Desmontaje de enlaces Microondas Multimarca",
+        features: ["fabricación / suministros / instalación de soportes"],
+        image: "/mw_link_service.png"
+      }
+    ],
     features: [
       "Estudios de línea de vista (LOS)",
       "Alineamiento de antenas",
@@ -38,6 +112,33 @@ export const SERVICES: Service[] = [
     title: "Instalación de Fibra Óptica",
     description: "Tendido, fusión y certificación de redes de fibra óptica aéreas y subterráneas, para backbone y última milla.",
     iconName: "Cable",
+    subServices: [
+      {
+        title: "Nodos 2G Nokia / Huawei (BTS / Flexi / Multiradio)",
+        features: [],
+        image: "/nodos_telecom.png"
+      },
+      {
+        title: "Nodos 3G Huawei (3800 / 3900)",
+        features: [],
+        image: "/nodos_telecom.png"
+      },
+      {
+        title: "Nodos LTE",
+        features: [],
+        image: "/nodos_telecom.png"
+      },
+      {
+        title: "Montaje de Racks para equipos",
+        features: ["de telecomunicaciones multimarca"],
+        image: "/server-cables.png"
+      },
+      {
+        title: "Montaje de antenas redes 2G /3G / 4G",
+        features: ["Suministro e Instalación de soportes", "antenas móviles / microondas"],
+        image: "/montaje_mw_antenas.png"
+      }
+    ],
     features: [
       "Canalización subterránea y aérea",
       "Empalmes por fusión",
@@ -54,6 +155,23 @@ export const SERVICES: Service[] = [
     title: "Instalación de Cableado Estructurado",
     description: "Diseño e implementación de sistemas de cableado estructurado Categoría 6, 6A y 7 para edificios corporativos y centros de datos.",
     iconName: "Cpu",
+    subServices: [
+      {
+        title: "Montaje y Desmontaje de Sites de Emergencia",
+        features: ["atender demanda/respaldo de sites ante fallas"],
+        image: "/civil_works_service.png"
+      },
+      {
+        title: "Instalación de trucks 2G / 3G / 4G",
+        features: ["grandes eventos y temporadas / concentración de usuarios"],
+        image: "/general_services_maintenance.png"
+      },
+      {
+        title: "Montaje y Desmontaje de enlaces Microondas Multimarca",
+        features: ["fabricación / suministros / instalación de soportes"],
+        image: "/montaje_mw_antenas.png"
+      }
+    ],
     features: [
       "Diseño de topología de red",
       "Instalación de gabinetes y racks",
@@ -70,6 +188,38 @@ export const SERVICES: Service[] = [
     title: "Obras Civiles",
     description: "Ejecución de obras civiles menores y mayores para infraestructura de telecomunicaciones, incluyendo fundaciones y zanjas.",
     iconName: "Server",
+    subServices: [
+      {
+        title: "Torre de Antenas",
+        features: [],
+        image: "/mw_link_service.png"
+      },
+      {
+        title: "Base de Antena",
+        features: [],
+        image: "/telecom_equip_service.png"
+      },
+      {
+        title: "Torre Instalada",
+        features: [],
+        image: "/nodos_telecom.png"
+      },
+      {
+        title: "Demolición con maquinaria pesada",
+        features: [],
+        image: "/civil_works_service.png"
+      },
+      {
+        title: "Cimientos y Zapatas",
+        features: [],
+        image: "/structured_cabling_service.png"
+      },
+      {
+        title: "Construcción de Obra Civil",
+        features: [],
+        image: "/civil_works_service.png"
+      }
+    ],
     features: [
       "Construcción de bases de concreto",
       "Apertura y cierre de zanjas",
@@ -86,6 +236,38 @@ export const SERVICES: Service[] = [
     title: "Obras Eléctricas",
     description: "Instalaciones eléctricas industriales, tableros de control y sistemas de puesta a tierra para sitios de telecomunicaciones.",
     iconName: "Cpu",
+    subServices: [
+      {
+        title: "Tableros Eléctricos",
+        features: [],
+        image: "/electrical_works_service.png"
+      },
+      {
+        title: "Instalaciones de Breakers",
+        features: [],
+        image: "/telecom_equip_service.png"
+      },
+      {
+        title: "Instalaciones de equipos Electrónicos",
+        features: [],
+        image: "/server-cables.png"
+      },
+      {
+        title: "Instalación de Tableros Eléctricos",
+        features: [],
+        image: "/electrical_works_service.png"
+      },
+      {
+        title: "Mantenimiento de Instalaciones",
+        features: [],
+        image: "/general_services_maintenance.png"
+      },
+      {
+        title: "Instalaciónes eléctricas en general",
+        features: [],
+        image: "/electrical_works_service.png"
+      }
+    ],
     features: [
       "Sistemas de puesta a tierra (SPAT)",
       "Instalación de pararrayos",
@@ -101,7 +283,54 @@ export const SERVICES: Service[] = [
     id: "general-services",
     title: "Servicios Generales",
     description: "Mantenimiento integral de instalaciones, climatización, seguridad y limpieza de sitios críticos y corporativos.",
-    iconName: "CheckCircle2",
+    iconName: "Wrench",
+    subServices: [
+      {
+        title: "Fabricación de Muebles en General",
+        features: [],
+        image: "/general_services_maintenance.png"
+      },
+      {
+        title: "Pintado de Losas Deportivas",
+        features: [],
+        image: "/civil_works_service.png"
+      },
+      {
+        title: "Pintado de Exteriores",
+        features: [],
+        image: "/structured_cabling_service.png"
+      },
+      {
+        title: "Pintado de Rejas",
+        features: [],
+        image: "/civil_works_service.png"
+      },
+      {
+        title: "Pintado de Interiores",
+        features: [],
+        image: "/structured_cabling_service.png"
+      },
+      {
+        title: "Instalación de Drywall",
+        features: [],
+        image: "/civil_works_service.png"
+      },
+      {
+        title: "Remodelaciones",
+        features: [],
+        image: "/general_services_maintenance.png"
+      },
+      {
+        title: "Instalación de Cielo Raso",
+        features: [],
+        image: "/civil_works_service.png"
+      },
+      {
+        title: "Instalaciones en general",
+        features: [],
+        image: "/general_services_maintenance.png"
+      }
+    ],
     features: [
       "Mantenimiento de aires acondicionados",
       "Control de plagas y limpieza",

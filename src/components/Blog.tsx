@@ -10,7 +10,7 @@ export default function Blog() {
       id: "desafios-5g",
       title: "Desafíos del despliegue 5G en zonas rurales",
       description: "Analizamos las implicaciones técnicas y logísticas de llevar conectividad de alta velocidad a regiones remotas del país.",
-      image: "/blog_5g_rural.png",
+      image: "https://images.unsplash.com/photo-1544928147-79a2dbc1f389?q=80&w=800",
       tag: "Infraestructura",
       tagColor: "bg-brand-red-light/10 text-brand-red-light border-brand-red-light/20",
       date: "18 Jun, 2026",
@@ -25,7 +25,7 @@ Adicionalmente, el suministro de energía representa un obstáculo primordial en
       id: "iot-telemetria",
       title: "IoT y Telemetría en la gestión hídrica",
       description: "Cómo los sensores inteligentes están revolucionando el monitoreo de recursos hídricos en la industria minera peruana.",
-      image: "/blog_iot_agua.png",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800",
       tag: "Telemetría",
       tagColor: "bg-brand-blue/10 text-brand-blue border-brand-blue/20",
       date: "12 Jun, 2026",
@@ -40,7 +40,7 @@ Esto permite a las compañías mineras predecir anomalías hídricas de inmediat
       id: "renovacion-iso",
       title: "Nuestra renovación de certificación ISO 9001",
       description: "Comfutura reafirma su compromiso con la excelencia operativa tras completar con éxito la auditoría anual de calidad.",
-      image: "/blog_iso_9001.png",
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800",
       tag: "Institucional",
       tagColor: "bg-zinc-800 text-gray-600 border-white/15",
       date: "05 Jun, 2026",
@@ -82,7 +82,7 @@ Esta renovación no es solo un sello formal, sino el reflejo diario de nuestro c
             <div 
               key={post.id}
               onClick={() => setSelectedPost(post)}
-              className="liquid-glass rounded-2xl overflow-hidden border border-gray-200 flex flex-col justify-between group cursor-pointer hover:border-brand-red-light/25 transition-all duration-300 shadow-xl"
+              className="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 flex flex-col justify-between group cursor-pointer hover:border-brand-red-light/30 hover:shadow-2xl transition-all duration-300 shadow-lg"
             >
               <div className="relative h-52 overflow-hidden">
                 <img 
@@ -135,9 +135,9 @@ Esta renovación no es solo un sello formal, sino el reflejo diario de nuestro c
               {/* Close Button */}
               <button 
                 onClick={() => setSelectedPost(null)}
-                className="absolute top-4 right-4 z-30 bg-black/60 hover:bg-black/80 text-gray-900 p-2 rounded-full border border-gray-200 transition-colors"
+                className="absolute top-4 right-4 z-30 bg-black/50 hover:bg-brand-red-light text-white p-2.5 rounded-full backdrop-blur-md transition-all shadow-lg hover:scale-110"
               >
-                <X size={16} />
+                <X size={18} />
               </button>
 
               <div className="relative h-64 w-full">

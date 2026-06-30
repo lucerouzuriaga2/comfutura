@@ -1,9 +1,17 @@
+export interface SubService {
+  title: string;
+  features: string[];
+  image?: string;
+  icon?: string;
+}
+
 export interface Service {
   id: string;
   title: string;
   description: string;
   iconName: string;
   image?: string;
+  subServices?: SubService[];
   features: string[];
   basePrice: number;
   unitPrice: number;
@@ -15,7 +23,7 @@ export interface Project {
   title: string;
   description: string;
   image: string;
-  category: "Minería" | "Urbano" | "Rural" | "Corporativo";
+  category: "Minería" | "Urbano" | "Rural" | "Corporativo" | "Infraestructura" | "Telefonía" | "Construcción";
   location: string;
   status: "COMPLETADO" | "EN PROGRESO" | "MANTENIMIENTO";
   year: string;

@@ -4,11 +4,13 @@ import { motion, AnimatePresence } from "motion/react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Stats from "./components/Stats";
+import Clients from "./components/Clients";
 import HomeAbout from "./components/HomeAbout";
 import HomeSolutions from "./components/HomeSolutions";
 import HomeCalculator from "./components/HomeCalculator";
 import About from "./components/About";
 import Services from "./components/Services";
+import ServiceDetail from "./components/ServiceDetail";
 import Projects from "./components/Projects";
 import Careers from "./components/Careers";
 import Blog from "./components/Blog";
@@ -43,6 +45,7 @@ export default function App() {
               <Route path="/" element={
                 <div className="w-full">
                   <Hero />
+                  <Clients />
                   <Stats />
                   <HomeAbout />
                   <HomeSolutions />
@@ -53,6 +56,7 @@ export default function App() {
               } />
               <Route path="/nosotros" element={<div className="w-full pt-16 md:pt-20"><About /></div>} />
               <Route path="/servicios" element={<div className="w-full pt-16 md:pt-20"><Services /></div>} />
+              <Route path="/servicios/:id" element={<div className="w-full pt-16 md:pt-20"><ServiceDetail /></div>} />
               <Route path="/proyectos" element={<div className="w-full pt-16 md:pt-20"><Projects /></div>} />
               <Route path="/careers" element={<div className="w-full pt-16 md:pt-20"><Careers /></div>} />
               <Route path="/blog" element={<div className="w-full pt-16 md:pt-20"><Blog /></div>} />
