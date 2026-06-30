@@ -1,0 +1,6 @@
+{
+  "name": "Comfutura S.A.C.",
+  "description": "Plataforma corporativa de ingeniería y telecomunicaciones de Comfutura S.A.C. con catálogo de servicios, proyectos, bolsa de trabajo, portal de clientes y cotizador de infraestructura.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
