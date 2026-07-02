@@ -69,6 +69,7 @@ export default function Admin() {
     category: "",
     technologies: "",
     imageFile: null as File | null,
+    currentImageUrl: "",
   });
 
   const [blogForm, setBlogForm] = useState({
@@ -77,6 +78,7 @@ export default function Admin() {
     author: "",
     tags: "",
     imageFile: null as File | null,
+    currentImageUrl: "",
   });
 
   const [sectionForm, setSectionForm] = useState({
@@ -240,8 +242,8 @@ export default function Admin() {
     setEditingId(null);
     setFormError("");
 
-    setProjectForm({ title: "", description: "", client: "", category: "", technologies: "", imageFile: null });
-    setBlogForm({ title: "", content: "", author: "", tags: "", imageFile: null });
+    setProjectForm({ title: "", description: "", client: "", category: "", technologies: "", imageFile: null, currentImageUrl: "" });
+    setBlogForm({ title: "", content: "", author: "", tags: "", imageFile: null, currentImageUrl: "" });
     setSectionForm({ key: "", title: "", content: "" });
 
     setIsFormOpen(true);
@@ -260,6 +262,7 @@ export default function Admin() {
         category: item.category,
         technologies: item.technologies.join(", "),
         imageFile: null,
+        currentImageUrl: item.image || "",
       });
     } else if (activeTab === "blogs") {
       setBlogForm({
@@ -268,6 +271,7 @@ export default function Admin() {
         author: item.author,
         tags: item.tags.join(", "),
         imageFile: null,
+        currentImageUrl: item.image || "",
       });
     } else if (activeTab === "sections") {
       setSectionForm({
@@ -648,7 +652,9 @@ export default function Admin() {
                               )}
                               <div>
                                 <div className="font-bold text-slate-800">{blog.title}</div>
-                                <div className="text-xs text-slate-500">Slug: {blog.slug}</div>
+                                <div className="text-xs text-slate-400 mt-1">
+                                  Enlace: <span className="text-brand-red hover:underline font-mono">comfutura.com/blog/{blog.slug}</span>
+                                </div>
                               </div>
                             </div>
                           </td>
@@ -819,6 +825,23 @@ export default function Admin() {
                       className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-600 text-sm file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-red file:text-white hover:file:bg-brand-red-light file:cursor-pointer transition-all border-dashed"
                       required={formType === "create"}
                     />
+                    {(projectForm.imageFile || projectForm.currentImageUrl) && (
+                      <div className="mt-3 flex items-center gap-4 p-3 bg-slate-50 border border-slate-200 rounded-xl">
+                        <img
+                          src={projectForm.imageFile ? URL.createObjectURL(projectForm.imageFile) : projectForm.currentImageUrl}
+                          alt="Previsualización de Proyecto"
+                          className="w-16 h-16 object-cover rounded-lg border border-slate-200"
+                        />
+                        <div className="text-xs">
+                          <span className="font-semibold text-slate-700 block">
+                            {projectForm.imageFile ? "Nueva imagen seleccionada:" : "Imagen actual en MongoDB:"}
+                          </span>
+                          <span className="text-slate-500 truncate block max-w-[320px]">
+                            {projectForm.imageFile ? projectForm.imageFile.name : projectForm.currentImageUrl}
+                          </span>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </>
               )}
@@ -883,6 +906,23 @@ export default function Admin() {
                       className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-600 text-sm file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-red file:text-white hover:file:bg-brand-red-light file:cursor-pointer transition-all border-dashed"
                       required={formType === "create"}
                     />
+                    {(blogForm.imageFile || blogForm.currentImageUrl) && (
+                      <div className="mt-3 flex items-center gap-4 p-3 bg-slate-50 border border-slate-200 rounded-xl">
+                        <img
+                          src={blogForm.imageFile ? URL.createObjectURL(blogForm.imageFile) : blogForm.currentImageUrl}
+                          alt="Previsualización de Blog"
+                          className="w-16 h-16 object-cover rounded-lg border border-slate-200"
+                        />
+                        <div className="text-xs">
+                          <span className="font-semibold text-slate-700 block">
+                            {blogForm.imageFile ? "Nueva imagen seleccionada:" : "Imagen actual en MongoDB:"}
+                          </span>
+                          <span className="text-slate-500 truncate block max-w-[320px]">
+                            {blogForm.imageFile ? blogForm.imageFile.name : blogForm.currentImageUrl}
+                          </span>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </>
               )}
@@ -947,7 +987,10 @@ export default function Admin() {
                   ) : (
                     <>
                       <Save size={16} />
-                      Guardar en MongoDB
+                      {formType === "edit" ? "Guardar Cambios" : (
+                        activeTab === "blogs" ? "Publicar Artículo" :
+                        activeTab === "projects" ? "Publicar Proyecto" : "Guardar Configuración"
+                      )}
                     </>
                   )}
                 </button>

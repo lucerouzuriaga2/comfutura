@@ -46,8 +46,11 @@ BlogSchema.pre("validate", function (next) {
       .toString()
       .toLowerCase()
       .trim()
+      .normalize("NFD") // Descompone caracteres combinados con diacríticos (tildes)
+      .replace(/[\u0300-\u036f]/g, "") // Elimina las tildes/diacríticos de los caracteres
+      .replace(/ñ/g, "n") // Convierte ñ a n
       .replace(/\s+/g, "-") // Reemplaza espacios con guiones
-      .replace(/[^\w\-]+/g, "") // Remueve caracteres no alfanuméricos
+      .replace(/[^\w\-]+/g, "") // Remueve caracteres no alfanuméricos restantes
       .replace(/\-\-+/g, "-") // Reemplaza múltiples guiones con uno solo
       .replace(/^-+/, "") // Remueve guiones al inicio
       .replace(/-+$/, ""); // Remueve guiones al final
