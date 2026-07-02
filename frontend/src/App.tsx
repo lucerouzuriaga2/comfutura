@@ -17,6 +17,7 @@ import Blog from "./components/Blog";
 import HomeBlogPreview from "./components/HomeBlogPreview";
 import Contact from "./components/Contact";
 import Portal from "./components/Portal";
+import Admin from "./components/Admin";
 import Footer from "./components/Footer";
 import ComfuChat from "./components/ComfuChat";
 import ScrollToTop from "./components/ScrollToTop";
@@ -62,6 +63,7 @@ export default function App() {
               <Route path="/blog" element={<div className="w-full pt-16 md:pt-20"><Blog /></div>} />
               <Route path="/contacto" element={<div className="w-full pt-16 md:pt-20"><Contact /></div>} />
               <Route path="/portal" element={<div className="w-full pt-16 md:pt-20"><Portal /></div>} />
+              <Route path="/admin" element={<div className="w-full pt-16 md:pt-20"><Admin /></div>} />
               <Route path="*" element={
                 <div className="w-full">
                   <Hero />

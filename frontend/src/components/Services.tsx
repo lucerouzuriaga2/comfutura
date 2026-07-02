@@ -36,6 +36,14 @@ export default function Services() {
   // Total estimate calculation
   const totalEstimate = Math.round((baseCost + unitCost + supportAddon) * slaMultiplier * urgencyMultiplier);
 
+  const getComplexityLabel = () => {
+    if (totalEstimate < 15000) return { label: "BAJA", color: "text-emerald-600 bg-emerald-50 border-emerald-200" };
+    if (totalEstimate < 40000) return { label: "MODERADA", color: "text-blue-600 bg-blue-50 border-blue-200" };
+    if (totalEstimate < 80000) return { label: "ELEVADA", color: "text-amber-600 bg-amber-50 border-amber-200" };
+    return { label: "CRÍTICA", color: "text-brand-red bg-red-50 border-red-200" };
+  };
+  const complexity = getComplexityLabel();
+
   const handleServiceSelect = (serviceId: string) => {
     const s = SERVICES.find(x => x.id === serviceId);
     if (s) {
@@ -322,7 +330,7 @@ export default function Services() {
             {/* Right Invoice Cost Overview Panel */}
             <div className="lg:col-span-5 flex flex-col justify-between bg-white border border-gray-200 rounded-xl p-6 lg:p-8 relative shadow-lg">
               <div>
-                <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest block mb-4">CÁLCULO PRESUPUESTARIO PRELIMINAR</span>
+                <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest block mb-4">ANÁLISIS DE ALCANCE PRELIMINAR</span>
                 
                 <h4 className="text-sm font-bold text-gray-900 mb-6 border-b border-gray-200 pb-4">
                   {selectedService.title}
@@ -331,23 +339,23 @@ export default function Services() {
                 <div className="space-y-4 font-mono text-xs text-gray-500 mb-8">
                   <div className="flex justify-between">
                     <span>Base de Ingeniería</span>
-                    <span className="text-gray-900">${selectedService.basePrice.toLocaleString()} USD</span>
+                    <span className="text-gray-900 font-semibold">Incluida (Estándar ComFutura)</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Costo Unitario ({quantity} unidades)</span>
-                    <span className="text-gray-900">${(selectedService.unitPrice * quantity).toLocaleString()} USD</span>
+                    <span>Alcance del Despliegue</span>
+                    <span className="text-gray-900 font-semibold">{quantity} {selectedService.unitLabel.toLowerCase()}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Soporte ({supportLevel})</span>
-                    <span className="text-gray-900">${supportAddon.toLocaleString()} USD</span>
+                    <span>Esquema de Soporte</span>
+                    <span className="text-gray-900 font-semibold">{supportLevel === "24x7" ? "SLA Crítico 24x7" : "Estándar 8x5"}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Factor SLA ({slaTarget})</span>
-                    <span className="text-gray-900">{slaMultiplier > 1 ? `+${Math.round((slaMultiplier-1)*100)}%` : "Sin Costo Adic."}</span>
+                    <span>Factor SLA Mínimo</span>
+                    <span className="text-gray-900 font-semibold">{slaTarget} de Disponibilidad</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Factor Urgencia</span>
-                    <span className="text-gray-900">{isUrgent ? "+15%" : "Estándar"}</span>
+                    <span>Prioridad de Despliegue</span>
+                    <span className="text-gray-900 font-semibold">{isUrgent ? "Acelerado (Doble Turno)" : "Estándar (Planificado)"}</span>
                   </div>
                 </div>
               </div>
@@ -355,22 +363,31 @@ export default function Services() {
               <div>
                 <div className="border-t border-gray-200 pt-6 mb-8 flex justify-between items-end">
                   <div className="flex flex-col">
-                    <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">Inversión Estimada</span>
-                    <span className="text-3xl font-black text-gray-900 mt-1">${totalEstimate.toLocaleString()} <span className="text-xs font-mono font-normal text-gray-500">USD</span></span>
+                    <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">Complejidad Técnica</span>
+                    <span className={`text-sm font-bold mt-1 px-3 py-1 rounded border font-mono ${complexity.color}`}>{complexity.label}</span>
                   </div>
-                  <span className="text-[10px] text-gray-500 font-mono mb-1">Sin impuestos (IGV)</span>
+                  <div className="flex flex-col text-right">
+                    <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">Plazo Estimado</span>
+                    <span className="text-sm font-bold text-gray-900 mt-1">
+                      {selectedService.id === "fiber-optic" 
+                        ? Math.ceil(4 + (quantity * 0.15)) 
+                        : selectedService.id === "mw-links" 
+                        ? Math.ceil(3 + (quantity * 1.5)) 
+                        : Math.ceil(4 + (quantity * 0.2))} semanas
+                    </span>
+                  </div>
                 </div>
 
                 <div className="flex flex-col gap-3">
                   <button
                     onClick={handleGeneratePDFQuote}
-                    className="w-full bg-brand-red-light hover:bg-brand-red text-gray-900 py-3 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
+                    className="w-full bg-brand-red-light hover:bg-brand-red text-gray-900 py-3 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <FileText size={14} />
-                    Generar Cotización Formal
+                    Generar Propuesta Técnica
                   </button>
                   <p className="text-[10px] text-gray-500 font-sans text-center">
-                    *Esta estimación no representa un contrato de servicios formal y requiere verificación de topografía y campo por un especialista de Comfutura.
+                    *Este análisis técnico preliminar no representa una cotización económica fija y requiere verificación de topografía, campo y factibilidad de red.
                   </p>
                 </div>
               </div>
@@ -412,7 +429,7 @@ export default function Services() {
                   <p className="text-xs text-zinc-500 font-mono">COMUNICACIÓN FUTURA S.A.C.<br/>R.U.C. 20546879135</p>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs bg-brand-red-light/10 text-brand-red font-mono font-bold px-2.5 py-1 rounded">PRESUPUESTO #CF-2026-0982</span>
+                  <span className="text-xs bg-brand-blue/10 text-brand-blue font-mono font-bold px-2.5 py-1 rounded">PROPUESTA TÉCNICA #CF-2026-0982</span>
                   <p className="text-xs text-zinc-500 mt-2 font-mono">Fecha: 27 Jun, 2026<br/>Validez: 30 Días</p>
                 </div>
               </div>
@@ -450,21 +467,20 @@ export default function Services() {
                     <thead>
                       <tr className="bg-zinc-100 font-mono text-zinc-500 uppercase text-left border-b border-zinc-200">
                         <th className="py-2 px-3">Servicio</th>
-                        <th className="py-2 px-3 text-right">Cantidad</th>
-                        <th className="py-2 px-3 text-right">Base</th>
-                        <th className="py-2 px-3 text-right">Estimado Total</th>
+                        <th className="py-2 px-3 text-right">Alcance (Cantidad)</th>
+                        <th className="py-2 px-3 text-right">SLA Objetivo</th>
+                        <th className="py-2 px-3 text-right">Complejidad</th>
                       </tr>
                     </thead>
                     <tbody className="text-zinc-700 font-mono">
                       <tr className="border-b border-zinc-100">
                         <td className="py-3 px-3 font-sans font-bold text-zinc-900">{selectedService.title}</td>
                         <td className="py-3 px-3 text-right">{quantity} {selectedService.unitLabel.toLowerCase()}</td>
-                        <td className="py-3 px-3 text-right">${selectedService.basePrice.toLocaleString()}</td>
-                        <td className="py-3 px-3 text-right font-bold text-zinc-900">${totalEstimate.toLocaleString()} USD</td>
+                        <td className="py-3 px-3 text-right">{slaTarget}</td>
+                        <td className="py-3 px-3 text-right font-bold text-zinc-900">{complexity.label}</td>
                       </tr>
                       <tr className="bg-zinc-50">
-                        <td colSpan={3} className="py-3 px-3 text-right font-bold text-zinc-500">Parámetros adicionales:</td>
-                        <td className="py-3 px-3 text-right text-[10px] text-zinc-600">SLA: {slaTarget} / Soporte: {supportLevel} {isUrgent ? "/ Urgente" : ""}</td>
+                        <td colSpan={4} className="py-3 px-3 text-right text-[10px] text-zinc-600">Soporte: {supportLevel === "24x7" ? "SLA Crítico 24x7" : "Estándar 8x5"} / Urgencia: {isUrgent ? "Sí" : "No"}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -473,7 +489,7 @@ export default function Services() {
                 {/* Submit actions */}
                 <div className="flex items-center justify-between border-t border-zinc-200 pt-6">
                   <div className="text-xs text-zinc-500 max-w-sm">
-                    Al enviar esta cotización, un Ingeniero de Proyectos de Comfutura se contactará en menos de 2 horas hábiles.
+                    Al enviar esta cotización, un Ingeniero de Proyectos de Comfutura se contactará en menos de 2 horas hábiles para realizar la cotización económica.
                   </div>
                   <div className="flex gap-3">
                     <button
@@ -481,7 +497,7 @@ export default function Services() {
                       onClick={() => {
                         window.print();
                       }}
-                      className="px-4 py-2 border border-zinc-300 rounded text-xs font-semibold hover:bg-zinc-100 text-zinc-700 transition-colors flex items-center gap-1"
+                      className="px-4 py-2 border border-zinc-300 rounded text-xs font-semibold hover:bg-zinc-100 text-zinc-700 transition-colors flex items-center gap-1 cursor-pointer"
                     >
                       <Download size={13} />
                       Imprimir/Guardar
@@ -489,7 +505,7 @@ export default function Services() {
                     <button
                       type="submit"
                       disabled={isSubmittingQuote}
-                      className="px-6 py-2 bg-brand-red hover:bg-brand-red-light text-gray-900 rounded text-xs font-semibold shadow-md transition-colors flex items-center gap-2"
+                      className="px-6 py-2 bg-brand-red hover:bg-brand-red-light text-white rounded text-xs font-semibold shadow-md transition-colors flex items-center gap-2 cursor-pointer"
                     >
                       {isSubmittingQuote ? "Enviando..." : "Enviar a Comfutura"}
                       <Send size={13} />
